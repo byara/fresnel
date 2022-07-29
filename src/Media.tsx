@@ -369,7 +369,7 @@ export function createMedia<
           )}
         >
           <DynamicResponsive.Consumer>
-            {matches => {
+            {(matches = {}) => {
               const matchingMediaQueries = Object.keys(matches).filter(
                 key => matches[key]
               )
@@ -427,7 +427,9 @@ export function createMedia<
 
       return (
         <MediaParentContext.Consumer>
-          {mediaParentContext => {
+          {(
+            mediaParentContext = { hasParentMedia: false, breakpointProps: {} }
+          ) => {
             return (
               <MediaParentContext.Provider value={mediaParentContextValue}>
                 <MediaContext.Consumer>
